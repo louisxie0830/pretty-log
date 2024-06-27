@@ -3,7 +3,9 @@
     "compilerOptions": {
       "outDir": "./dist/esm",
       "target": "es2015",
-      "module": "es6"
+      "module": "es6",
+      "composite": true,
+      "sourceMap": true
     }
   }
   
