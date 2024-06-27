@@ -1,17 +1,34 @@
 {
   "name": "pretty-log",
   "version": "1.0.0",
-  "description": "",
+  "description": "A TypeScript library for enhancing and formatting log messages.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "stats": "cloc . --exclude-dir=node_modules,lib,examples,tmp,.git --exclude-ext=yaml,yml,json,svg,xml"
   },
-  "keywords": ["console", "log", "pretty"],
-  "author": "Nix Xie",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/louisxie0830/pretty-log.git"
+  },
+  "keywords": [
+    "console",
+    "log",
+    "pretty",
+    "logging",
+    "typescript",
+    "formatting"
+  ],
+  "author": "Nil Xie <bfgh2678@gmail.com>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/louisxie0830/pretty-log/issues"
+  },
+  "homepage": "https://github.com/louisxie0830/pretty-log#readme",
   "devDependencies": {
+    "cloc": "^2.0.0-cloc",
     "typescript": "^4.5.4"
   }
 }
