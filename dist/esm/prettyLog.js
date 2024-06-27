@@ -1,23 +1,10 @@
-"use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Creates a PrettyLog instance with the given configuration.
  * @param {PrettyLogConfig} config - The configuration for the PrettyLog instance.
  * @returns {PrettyLogMethods} An object with methods for pretty logging.
  */
 function prettyLog(config) {
-    var currentConfig = __assign({}, config);
+    const currentConfig = Object.assign({}, config);
     /**
      * Checks if logging is currently enabled.
      * @returns {boolean} True if logging is enabled, false otherwise.
@@ -42,17 +29,16 @@ function prettyLog(config) {
     function prettyPrint(title, text, color) {
         if (!isEnabled())
             return;
-        console.log("%c ".concat(title, " %c ").concat(text, " %c"), "background:".concat(color, ";border:1px solid ").concat(color, "; padding: 1px; border-radius: 2px 0 0 2px; color: #fff;"), "border:1px solid ".concat(color, "; padding: 1px; border-radius: 0 2px 2px 0; color: ").concat(color, ";"), 'background:transparent');
+        console.log(`%c ${title} %c ${text} %c`, `background:${color};border:1px solid ${color}; padding: 1px; border-radius: 2px 0 0 2px; color: #fff;`, `border:1px solid ${color}; padding: 1px; border-radius: 0 2px 2px 0; color: ${color};`, 'background:transparent');
     }
     /**
      * Logs an info message.
      * @param {string} textOrTitle - The message or title to log.
      * @param {string} [content=''] - Optional content if textOrTitle is used as a title.
      */
-    function info(textOrTitle, content) {
-        if (content === void 0) { content = ''; }
-        var title = isEmpty(content) ? 'Info' : textOrTitle;
-        var text = isEmpty(content) ? textOrTitle : content;
+    function info(textOrTitle, content = '') {
+        const title = isEmpty(content) ? 'Info' : textOrTitle;
+        const text = isEmpty(content) ? textOrTitle : content;
         prettyPrint(title, text, '#909399');
     }
     /**
@@ -60,10 +46,9 @@ function prettyLog(config) {
      * @param {string} textOrTitle - The error message or title to log.
      * @param {string} [content=''] - Optional content if textOrTitle is used as a title.
      */
-    function error(textOrTitle, content) {
-        if (content === void 0) { content = ''; }
-        var title = isEmpty(content) ? 'Error' : textOrTitle;
-        var text = isEmpty(content) ? textOrTitle : content;
+    function error(textOrTitle, content = '') {
+        const title = isEmpty(content) ? 'Error' : textOrTitle;
+        const text = isEmpty(content) ? textOrTitle : content;
         prettyPrint(title, text, '#F56C6C');
     }
     /**
@@ -71,10 +56,9 @@ function prettyLog(config) {
      * @param {string} textOrTitle - The warning message or title to log.
      * @param {string} [content=''] - Optional content if textOrTitle is used as a title.
      */
-    function warn(textOrTitle, content) {
-        if (content === void 0) { content = ''; }
-        var title = isEmpty(content) ? 'Warn' : textOrTitle;
-        var text = isEmpty(content) ? textOrTitle : content;
+    function warn(textOrTitle, content = '') {
+        const title = isEmpty(content) ? 'Warn' : textOrTitle;
+        const text = isEmpty(content) ? textOrTitle : content;
         prettyPrint(title, text, '#E6A23C');
     }
     /**
@@ -82,10 +66,9 @@ function prettyLog(config) {
      * @param {string} textOrTitle - The success message or title to log.
      * @param {string} [content=''] - Optional content if textOrTitle is used as a title.
      */
-    function success(textOrTitle, content) {
-        if (content === void 0) { content = ''; }
-        var title = isEmpty(content) ? 'Success' : textOrTitle;
-        var text = isEmpty(content) ? textOrTitle : content;
+    function success(textOrTitle, content = '') {
+        const title = isEmpty(content) ? 'Success' : textOrTitle;
+        const text = isEmpty(content) ? textOrTitle : content;
         prettyPrint(title, text, '#67C23A');
     }
     /**
@@ -96,13 +79,13 @@ function prettyLog(config) {
         currentConfig.enabled = enabled;
     }
     return {
-        info: info,
-        error: error,
-        warn: warn,
+        info,
+        error,
+        warn,
         warning: warn,
-        success: success,
+        success,
         log: info,
-        setEnabled: setEnabled,
+        setEnabled,
     };
 }
-exports.default = prettyLog;
+export default prettyLog;

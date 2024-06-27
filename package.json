@@ -2,10 +2,13 @@
   "name": "pretty-log",
   "version": "1.0.0",
   "description": "A TypeScript library for enhancing and formatting log messages.",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "npm run build:cjs && npm run build:esm",
+    "build:cjs": "tsc --project tsconfig.cjs.json",
+    "build:esm": "tsc --project tsconfig.esm.json",
     "prepublishOnly": "npm run build",
     "stats": "cloc . --exclude-dir=node_modules,lib,examples,tmp,.git --exclude-ext=yaml,yml,json,svg,xml",
     "test": "jest",
@@ -44,6 +47,7 @@
     "eslint-config-prettier": "^8.0.0",
     "eslint-plugin-prettier": "^3.0.0"
   },
+  "type": "module",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
